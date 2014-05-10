@@ -7,6 +7,7 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
+    <div class="container">
 
     <% if flash[:error] -%>
       <p class='error'><%=h flash[:error] %></p>
@@ -16,11 +17,22 @@
     <% end %>
 
     <nav class="navbar navbar-default" role="navigation">
-      <ul class="nav navbar-nav navbar-right">
-        <% if signed_in? %><li><%= link_to "Sign Out", session_path, :method => 'delete' %></li><% end %>
-      </ul>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <% if signed_in? %>
+        <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to "Sign Out", session_path, :method => 'delete' %></li>
+        </ul>
+      <% else %>
+        <%= form_tag login_request_index_path, :class => "navbar-form navbar-right" do %>
+          <%= label_tag(:username, 'BGG username:') %>
+          <%= text_field_tag(:username) %>
+          <%= submit_tag("Sign in") %>
+        <% end %>
+      <% end %>
+    </div>
     </nav>
     <%= yield %>
 
-  </body>
+  </div>
+</body>
 </html>

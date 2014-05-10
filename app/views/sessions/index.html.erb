@@ -1,12 +1,11 @@
+<div class="jumbotron">
 <h1>Oz Math Trade helper</h1>
 
 <p>This tool is a work in progress to help with Oz Maths Trades</p>
 
-<p>It is the work of phantomwhale, so send all blame / praise his way</p>
+<p>It is the work of <%= link_to 'phantomwhale', Bgg.link_to_user('phantomwhale') %>, so send all blame / praise his way</p>
 
-<p>To access the tool, you need to request a log in link to be sent to your BGG mail account. You can do this using the simple form below:</p>
+<p>To access the tool, you need to enter your BGG username above and click Sign In</p>
 
-<%= form_tag(login_request_index_path) do %>
-  <%= text_field_tag(:username) %>
-  <%= submit_tag("Request login") %>
-<% end %>
+<p>Note that this tool is under development, and all data contained could be accessed by others and potentially destroyed at any point.</p>
+</div>
