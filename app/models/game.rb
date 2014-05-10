@@ -6,6 +6,10 @@ class Game
     @node = node
   end
 
+  def bgg_link
+    "http://www.boardgamegeek.com/geeklist/item/#{@node['id']}"
+  end
+
   def name
     @node['objectname']
   end

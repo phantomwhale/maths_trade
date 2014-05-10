@@ -1,9 +1,18 @@
 <h1>Trade list</h1>
 
-<ol>
-  <% @geeklist.games.each do |game| %>
-    <li>
-      <%= game.to_s %>
-    </li>
-  <% end %>
-</ol>
+<table class="table">
+  <thead>
+    <th class='col-md-1'>GL #</td>
+    <th class='col-md-11'>Game</td>
+  </thead>
+  <tbody>
+    <% @geeklist.games.each do |game| %>
+      <tr>
+        <td class='col-md-1'>
+          <%= link_to game.id, game.bgg_link %>
+        </td>
+        <td class='col-md-11'><%= game.to_s %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

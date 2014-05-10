@@ -1,7 +1,7 @@
 module Bgg
   class Http
-    def self.geeklist
-      open('http://http://www.boardgamegeek.com/xmlapi/geeklist/172859')
+    def self.geeklist(id)
+      open("http://www.boardgamegeek.com/xmlapi/geeklist/#{id}")
     end
   end
 end
