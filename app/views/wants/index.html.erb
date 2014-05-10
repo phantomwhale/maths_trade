@@ -1,0 +1,30 @@
+<h1>Wants list</h1>
+
+<table class="table remove_want_behaviour">
+  <thead>
+    <th class='col-md-1'>GL #</td>
+    <th class='col-md-1'>Actions</td>
+    <th class='col-md-3'>Game</td>
+    <th class='col-md-3'>Username</td>
+  </thead>
+  <tbody>
+    <% @wants.each do |want| %>
+      <tr>
+        <td class='col-md-1'>
+          <%= link_to want.game_id, Bgg.link_to_list_item(want.game_id) %>
+        </td>
+        <td class='col-md-1'>
+          <%= link_to '-want', want_path(want.id), data: { 
+            remote: true, type: 'json', method: 'delete', disable_with: 'Submitting...', success_text: 'REMOVED'
+          }, :class => 'btn btn-primary btn-xs' %>
+        </td>
+        <td class='col-md-3'>
+          <%= link_to want.game_name, Bgg.link_to_thing(want.game_id) %>
+        </td>
+        <td class='col-md-3'>
+          <%= link_to want.seller, Bgg.link_to_user(want.seller) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

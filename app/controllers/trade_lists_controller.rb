@@ -1,4 +1,4 @@
-class TradelistController < ApplicationController
+class TradeListsController < ApplicationController
   before_filter :authenticate_user!
 
   def show 

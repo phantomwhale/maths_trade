@@ -18,9 +18,9 @@ Rails.application.routes.draw do
   root 'sessions#index'
 
   resource :session, only: [:create, :destroy]
-  resources :login_request, only: [:create]
-  resources :tradelist, only: [:show]
-  resources :want, only: [:create]
+  resource :login_request, only: [:create]
+  resources :trade_lists, only: [:show]
+  resources :wants, only: [:create, :index, :destroy]
 
   # Example resource route with options:
   #   resources :products do

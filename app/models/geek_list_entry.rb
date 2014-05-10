@@ -1,4 +1,4 @@
-class Game
+class GeekListEntry
   attr_reader :id
 
   def initialize(id, node)
@@ -11,7 +11,7 @@ class Game
   end
 
   def bgg_link
-    Bgg.link_to_thing(@node['objectid'])
+    Bgg.link_to_thing(objectid)
   end
 
   def name
@@ -20,6 +20,10 @@ class Game
 
   def user
     @node['username']
+  end
+
+  def objectid
+    @node['objectid']
   end
 
   def to_s

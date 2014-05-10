@@ -1,0 +1,36 @@
+<h1>Trade list</h1>
+
+<table class="table submit_want_behaviour">
+  <thead>
+    <th class='col-md-1'>GL #</td>
+    <th class='col-md-1'>Actions</td>
+    <th class='col-md-3'>Game</td>
+    <th class='col-md-3'>Username</td>
+  </thead>
+  <tbody>
+    <% @geeklist.games.each do |game_entry| %>
+      <tr>
+        <td class='col-md-1'>
+          <%= link_to game_entry.id, game_entry.list_item_link %>
+        </td>
+        <td class='col-md-1'>
+          <% if @current_user.wants.find_by(game_id: game_entry.id) %>
+            ADDED
+          <% else %>
+            <%= link_to '+want', wants_path, data: { 
+              remote: true, type: 'json', method: 'post', params: { 
+                game_id: game_entry.id, game_objectid: game_entry.object_id, seller: game_entry.user
+              }.to_param, disable_with: 'Submitting...', success_text: 'ADDED'
+            }, :class => 'btn btn-primary btn-xs' %>
+          <% end %>
+        </td>
+        <td class='col-md-3'>
+          <%= link_to game_entry.name, game_entry.bgg_link %>
+        </td>
+        <td class='col-md-3'>
+          <%= link_to game_entry.user, Bgg.link_to_user(game_entry.user) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

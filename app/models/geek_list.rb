@@ -1,4 +1,6 @@
 class GeekList
+  AUSSIE_MID_YEAR_2014_ID = 172859
+
   def initialize(doc)
     @root = doc.root
   end
@@ -11,7 +13,7 @@ class GeekList
     index = 0
     @root.xpath('item').map { |node|
       index = index + 1
-      Game.new(index, node)
+      GeekListEntry.new(index, node)
     }
   end
 end

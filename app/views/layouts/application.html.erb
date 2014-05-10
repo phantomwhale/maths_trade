@@ -1,38 +1,44 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Mathstrade</title>
+    <title>Aussie Maths Trade Assistant</title>
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
     <%= csrf_meta_tags %>
   </head>
   <body>
     <div class="container">
-
-    <% if flash[:error] -%>
-      <p class='error'><%=h flash[:error] %></p>
-    <% end %>
-    <% if flash[:notice] -%>
-      <p class='notice'><%=h flash[:notice] %></p>
-    <% end %>
-
-    <nav class="navbar navbar-default" role="navigation">
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <% if signed_in? %>
-        <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to "Sign Out", session_path, :method => 'delete' %></li>
-        </ul>
-      <% else %>
-        <%= form_tag login_request_index_path, :class => "navbar-form navbar-right" do %>
-          <%= label_tag(:username, 'BGG username:') %>
-          <%= text_field_tag(:username) %>
-          <%= submit_tag("Sign in") %>
-        <% end %>
+      <% if flash[:error] -%>
+        <p class='error'><%=h flash[:error] %></p>
       <% end %>
-    </div>
-    </nav>
-    <%= yield %>
+      <% if flash[:notice] -%>
+        <p class='notice'><%=h flash[:notice] %></p>
+      <% end %>
 
-  </div>
-</body>
+      <nav class="navbar navbar-default" role="navigation">
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <% if signed_in? %>
+            <ul class="nav navbar-nav navbar-left">
+              <%= content_tag :li, {class: ("active" if current_page?(trade_list_path(GeekList::AUSSIE_MID_YEAR_2014_ID)))} do %>
+                <%= link_to "Maths Trade List", trade_list_path(GeekList::AUSSIE_MID_YEAR_2014_ID) %>
+              <% end %>
+              <%= content_tag :li, {class: ("active" if current_page?(wants_path))} do %>
+                <%= link_to "Wants", wants_path %>
+              <% end %>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><%= link_to "Sign Out", session_path, :method => 'delete' %></li>
+            </ul>
+          <% else %>
+            <%= form_tag login_request_path, :class => "navbar-form navbar-right" do %>
+              <%= label_tag(:username, 'BGG username:') %>
+              <%= text_field_tag(:username) %>
+              <%= submit_tag("Sign in") %>
+            <% end %>
+          <% end %>
+        </div>
+      </nav>
+      <%= yield %>
+    </div>
+  </body>
 </html>
