@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  mount CurrentUser::Engine => '/current_user'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -13,13 +15,12 @@ Rails.application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-  root 'login#home'
-  post 'login/:token', to: 'login#login', as: 'login'
+  root 'sessions#index'
 
+  resource :session, only: [:create, :destroy]
   resources :login_request, only: [:create]
   resources :tradelist, only: [:show]
   resources :want, only: [:create]
-  
 
   # Example resource route with options:
   #   resources :products do

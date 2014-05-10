@@ -52,6 +52,8 @@ GEM
       execjs
     coffee-script-source (1.7.0)
     columnize (0.8.9)
+    current_user (0.2.1)
+      rails (>= 3.2, < 5)
     debug_inspector (0.0.2)
     debugger (1.6.6)
       columnize (>= 0.3.1)
@@ -204,6 +206,7 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
+  current_user
   jbuilder (~> 2.0)
   jquery-rails
   nokogiri

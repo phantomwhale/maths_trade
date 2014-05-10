@@ -1,4 +1,6 @@
 class WantController < ApplicationController
+  before_filter :authenticate_user!
+
   def create
     Want.create!(user: current_user, game_id: params[:game_id])
     
