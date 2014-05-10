@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
   resources :login_request, only: [:create]
   resources :tradelist, only: [:show]
+  resources :want, only: [:create]
   
 
   # Example resource route with options:
