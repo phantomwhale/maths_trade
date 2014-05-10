@@ -13,7 +13,12 @@ Rails.application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
+  root 'login#home'
+  post 'login/:token', to: 'login#login', as: 'login'
+
+  resources :login_request, only: [:create]
   resources :tradelist, only: [:show]
+  
 
   # Example resource route with options:
   #   resources :products do
