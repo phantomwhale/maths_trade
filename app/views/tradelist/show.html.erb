@@ -3,15 +3,21 @@
 <table class="table">
   <thead>
     <th class='col-md-1'>GL #</td>
-    <th class='col-md-11'>Game</td>
+    <th class='col-md-3'>Game</td>
+    <th class='col-md-3'>Username</td>
   </thead>
   <tbody>
     <% @geeklist.games.each do |game| %>
       <tr>
         <td class='col-md-1'>
-          <%= link_to game.id, game.bgg_link %>
+          <%= link_to game.id, game.list_item_link %>
         </td>
-        <td class='col-md-11'><%= game.to_s %></td>
+        <td class='col-md-3'>
+          <%= link_to game.name, game.bgg_link %>
+        </td>
+        <td class='col-md-3'>
+          <%= link_to game.user, Bgg.link_to_user(game.user) %>
+        </td>
       </tr>
     <% end %>
   </tbody>

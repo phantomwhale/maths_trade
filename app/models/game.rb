@@ -6,8 +6,12 @@ class Game
     @node = node
   end
 
+  def list_item_link
+    Bgg.link_to_list_item(@node['id'])
+  end
+
   def bgg_link
-    "http://www.boardgamegeek.com/geeklist/item/#{@node['id']}"
+    Bgg.link_to_thing(@node['objectid'])
   end
 
   def name
@@ -19,6 +23,6 @@ class Game
   end
 
   def to_s
-    "#{id}, #{name}, #{user}"
+    "#{name}, #{user}"
   end
 end
