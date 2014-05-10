@@ -1,0 +1,2 @@
+module Bgg
+end

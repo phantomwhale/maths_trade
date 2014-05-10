@@ -1,0 +1,9 @@
+<h1>Trade list</h1>
+
+<ol>
+  <% @geeklist.games.each do |game| %>
+    <li>
+      <%= game.to_s %>
+    </li>
+  <% end %>
+</ol>
