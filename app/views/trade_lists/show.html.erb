@@ -8,13 +8,13 @@
     <th class='col-md-3'>Username</td>
   </thead>
   <tbody>
-    <% @geeklist.games.each do |game_entry| %>
+    <% @trade_list.games.each do |game_entry| %>
       <tr>
         <td class='col-md-1'>
           <%= link_to game_entry.id, game_entry.list_entry_link %>
         </td>
         <td class='col-md-1'>
-          <% if @current_user.wants.find_by(game_id: game_entry.id) %>
+          <% if game_entry.wanted? %>
             ADDED
           <% else %>
             <%= link_to '+want', wants_path, data: { 

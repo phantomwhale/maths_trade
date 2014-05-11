@@ -1,5 +1,6 @@
 class Want < ActiveRecord::Base
   validates :user, :game_id, :list_entry_id, presence: true
+  validates_uniqueness_of :list_entry_id, :scope => :user_id
   belongs_to :user
 
   def game_name
