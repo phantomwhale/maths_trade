@@ -4,6 +4,16 @@ module Bgg
       @adapter = Bgg::Http
     end
 
+    def geek_list(id)
+      file = adapter.geeklist(id)
+      GeekList.new(Nokogiri::XML(file))
+    end
+
+    def game_entry(id)
+      file = Bgg.adapter.game(id)
+      GameEntry.new(Nokogiri::XML(file))
+    end
+
     def link_to_user(user)
       "http://www.boardgamegeek.com/user/#{user}" 
     end

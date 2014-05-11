@@ -4,12 +4,6 @@ class Want < ActiveRecord::Base
   belongs_to :user
 
   def game_name
-    game_entry.name
+    Bgg.game_entry(game_id).name
   end 
-
-  private
-
-  def game_entry
-    @game_entry ||= GameEntry.new(Nokogiri::XML(Bgg.adapter.game(game_id)))
-  end
 end
