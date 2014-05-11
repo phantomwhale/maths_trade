@@ -4,6 +4,10 @@ class TradeListPresenter
     @wants = current_user.wants.collect(&:list_entry_id)
   end
 
+  def name
+    @geek_list.name
+  end
+
   def games
     @geek_list.games.map do |game|
       game.extend(WantStatus).wanted = @wants.include?(game.list_entry_id.to_i)

@@ -9,6 +9,10 @@ class GeekList
     @root.at_xpath('numitems').text.to_i 
   end
 
+  def name
+    @root.at_xpath('title').text
+  end
+
   def games
     index = 0
     @root.xpath('item').map { |node|

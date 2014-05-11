@@ -1,4 +1,6 @@
 class LoginRequestsController < ApplicationController
+  skip_before_filter :authenticate_user!
+
   def create
     @user = User.where(:username => params[:username]).first_or_create
     #TODO send a geekmail with a login link. Until then, log us in...

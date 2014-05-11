@@ -1,5 +1,4 @@
 class WantsController < ApplicationController
-  before_filter :authenticate_user!
 
   def index
     @wants = Want.where(:user => current_user).order('list_entry_id')
