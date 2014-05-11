@@ -6,12 +6,14 @@
     <th class='col-md-1'>Actions</td>
     <th class='col-md-3'>Game</td>
     <th class='col-md-3'>Username</td>
+    <th class='col-md-3'>Trade Code</td>
   </thead>
   <tbody>
     <% @wants.each do |want| %>
+      <% game = @games_by_list_entry_id[want.list_entry_id] %>
       <tr>
         <td class='col-md-1'>
-          <%= link_to want.game_id, Bgg.link_to_list_item(want.game_id) %>
+          <%= link_to game.id, Bgg.link_to_list_item(game.list_entry_id) %>
         </td>
         <td class='col-md-1'>
           <%= link_to '-want', want_path(want.id), data: { 
@@ -19,10 +21,13 @@
           }, :class => 'btn btn-primary btn-xs' %>
         </td>
         <td class='col-md-3'>
-          <%= link_to want.game_name, Bgg.link_to_thing(want.game_id) %>
+          <%= link_to game.name, Bgg.link_to_thing(game.id) %>
         </td>
         <td class='col-md-3'>
-          <%= link_to want.seller, Bgg.link_to_user(want.seller) %>
+          <%= link_to game.user, Bgg.link_to_user(game.user) %>
+        </td>
+        <td class='col-md-3'>
+          <%= game.trade_code %>
         </td>
       </tr>
     <% end %>

@@ -16,4 +16,8 @@ class GeekList
       GeekListEntry.new(index, node)
     }
   end
+
+  def games_by_list_entry_id
+    @games_by_list_entry ||= Hash[*games.map { |game| [game.list_entry_id.to_i, game] }.flatten]
+  end
 end

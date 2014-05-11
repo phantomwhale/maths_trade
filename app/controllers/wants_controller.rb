@@ -2,16 +2,14 @@ class WantsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @wants = current_user.wants
+    @wants = Want.where(:user => current_user).order('list_entry_id')
+    @games_by_list_entry_id = Bgg.geek_list(GeekList::AUSSIE_MID_YEAR_2014_ID).games_by_list_entry_id
   end
 
   def create
-    Want.create!(user: current_user, 
-                 game_id: params[:game_id], 
-                 list_entry_id: params[:list_entry_id], 
-                 seller: params[:seller])
+    Want.create!(user: current_user, list_entry_id: params[:list_entry_id])
     respond_to do |format|
-      format.html { redirect_to trade_list_path(GeekList::AUSSIE_MID_YEAR_2014_ID), notice: "Added item #{params[:game_id]} to want list" }
+      format.html { redirect_to trade_list_path(GeekList::AUSSIE_MID_YEAR_2014_ID), notice: "Added item #{params[:list_entry_id]} to want list" }
       format.json { render :json => '{ "status" : "ok" }' }
     end
   end

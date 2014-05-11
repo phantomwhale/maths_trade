@@ -26,6 +26,11 @@ class GeekListEntry
     @node['username']
   end
 
+  def trade_code
+    comments = @node.xpath('comment[@username="mr_lunch"]').collect(&:text)[0]
+    comments ? comments.scan(/\d{7}-[0-9A-Z]{5}/).first : nil
+  end
+
   def list_entry_id
     @node['id']
   end

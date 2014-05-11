@@ -1,10 +1,14 @@
 module Bgg
   class << self
-    def adapter 
-      @adapter = Bgg::Http
+    def adapter
+      @adapter ||= Bgg::Http
     end
 
-    def geek_list(id)
+    def adapter=(clazz)
+      @adapter = clazz
+    end
+
+    def geek_list(id = GeekList::AUSSIE_MID_YEAR_2014_ID)
       file = adapter.geeklist(id)
       GeekList.new(Nokogiri::XML(file))
     end
