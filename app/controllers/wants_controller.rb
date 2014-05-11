@@ -8,7 +8,7 @@ class WantsController < ApplicationController
   def create
     Want.create!(user: current_user, 
                  game_id: params[:game_id], 
-                 game_objectid: params[:game_objectid], 
+                 list_entry_id: params[:list_entry_id], 
                  seller: params[:seller])
     respond_to do |format|
       format.html { redirect_to trade_list_path(GeekList::AUSSIE_MID_YEAR_2014_ID), notice: "Added item #{params[:game_id]} to want list" }

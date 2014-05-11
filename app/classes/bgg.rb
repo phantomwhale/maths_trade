@@ -1,7 +1,7 @@
 module Bgg
   class << self
     def adapter 
-      @adapter = Bgg::Local
+      @adapter = Bgg::Http
     end
 
     def link_to_user(user)

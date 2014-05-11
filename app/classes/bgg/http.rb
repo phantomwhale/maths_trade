@@ -1,3 +1,5 @@
+require 'open-uri'
+
 module Bgg
   class Http
     def self.geeklist(id)

@@ -1,5 +1,5 @@
 class Want < ActiveRecord::Base
-  validates :user, :game_id, :game_objectid, presence: true
+  validates :user, :game_id, :list_entry_id, presence: true
   belongs_to :user
 
   def game_name
