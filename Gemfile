@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 ruby '2.1.1'
 
+# UNICORNS AND RAINBOWS POWER THIS APP
+gem 'unicorn-rails'
 # Heroku need this to compile our production assets
 gem 'rails_12factor', group: :production
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -29,9 +31,6 @@ gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootst
 #gem 'bgg-api'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
-# Use unicorn as the app server
-# gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
