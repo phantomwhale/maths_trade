@@ -22,6 +22,6 @@ class Offer
   end
 
   def trades 
-    trade_row ? trade_row.trades : nil
+    trade_row ? trade_row.trades : []
   end
 end

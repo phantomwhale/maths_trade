@@ -20,10 +20,10 @@
           <%= offer.trade_code %>
         </td>
         <td class='col-md-5'>
-          <% if offer.trades %>
-            <p><%= offer.trades.map { |game| game.name }.join(', ') %> 
-          <% else %>
+          <% if offer.trades.blank? %>
             <p>No trades defined yet ! Click <%= link_to 'here', new_offer_trade_row_path(offer.list_entry_id) %> to create trade list</p>
+          <% else %>
+            <p><%= offer.trades.map { |game| game.name }.join(', ') %> 
           <% end %>
         </td>
       </tr>
