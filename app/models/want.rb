@@ -6,6 +6,6 @@ class Want < ActiveRecord::Base
   delegate :game_id, :index, :name, :owner, :trade_code, :to => :list_entry
 
   def list_entry
-    @list_entry ||= Bgg.geek_list(GeekList::AUSSIE_MID_YEAR_2014_ID).list_entry(list_entry_id)
+    @list_entry ||= Bgg.geek_list.list_entry(list_entry_id)
   end
 end

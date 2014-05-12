@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   resource :login_request, only: [:create]
   resources :geek_lists, only: [:show]
   resources :wants, only: [:create, :index, :destroy]
+  resource :want_list, only: [:show]
   resources :offers, only: [:index] do
     resources :trade_rows, only: [:new, :create]
   end
