@@ -20,16 +20,13 @@
           <% if signed_in? %>
             <ul class="nav navbar-nav navbar-left">
               <%= content_tag :li, {class: ("active" if current_page?(trade_list_path(GeekList::AUSSIE_MID_YEAR_2014_ID)))} do %>
-                <%= link_to "Current Maths Trade List", trade_list_path(GeekList::AUSSIE_MID_YEAR_2014_ID) %>
+                <%= link_to "Current Trade List", trade_list_path(GeekList::AUSSIE_MID_YEAR_2014_ID) %>
               <% end %>
               <%= content_tag :li, {class: ("active" if current_page?(wants_path))} do %>
                 <%= link_to "Wants", wants_path %>
               <% end %>
               <%= content_tag :li, {class: ("active" if current_page?(offers_path))} do %>
-                <%= link_to "Offers", offers_path %>
-              <% end %>
-              <%= content_tag :li, {class: ("active" if current_page?(trades_path))} do %>
-                <%= link_to "Trades", trades_path %>
+                <%= link_to "Manage Trades", offers_path %>
               <% end %>
             </ul>
             <ul class="nav navbar-nav navbar-right">

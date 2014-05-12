@@ -1,7 +1,7 @@
 module Bgg
   class << self
     def adapter
-      @adapter ||= Bgg::Http
+      @adapter ||= Rails.env.development? ? Bgg::Local : Bgg::Http
     end
 
     def adapter=(clazz)

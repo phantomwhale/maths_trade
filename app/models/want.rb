@@ -3,7 +3,9 @@ class Want < ActiveRecord::Base
   validates_uniqueness_of :list_entry_id, :scope => :user_id
   belongs_to :user
 
-  def game_name
-    Bgg.game_entry(game_id).name
-  end 
+  delegate :game_id, :index, :name, :owner, :trade_code, :to => :list_entry
+
+  def list_entry
+    @list_entry ||= Bgg.geek_list(GeekList::AUSSIE_MID_YEAR_2014_ID).list_entry(list_entry_id)
+  end
 end

@@ -21,7 +21,9 @@ Rails.application.routes.draw do
   resource :login_request, only: [:create]
   resources :trade_lists, only: [:show]
   resources :wants, only: [:create, :index, :destroy]
-  resources :offers, only: [:index]
+  resources :offers, only: [:index] do
+    resources :trade_rows, only: [:new, :create]
+  end
 
   # Example resource route with options:
   #   resources :products do

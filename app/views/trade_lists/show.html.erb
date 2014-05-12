@@ -2,33 +2,33 @@
 
 <table class="table toggle_want_behaviour">
   <thead>
-    <th class='col-md-1'>GL #</td>
-    <th class='col-md-1'>Actions</td>
-    <th class='col-md-3'>Game</td>
-    <th class='col-md-3'>Username</td>
+    <th class='col-md-1'>GL #</th>
+    <th class='col-md-1'>Actions</th>
+    <th class='col-md-3'>Game</th>
+    <th class='col-md-3'>Username</th>
   </thead>
   <tbody>
-    <% @trade_list.games.each do |game_entry| %>
+    <% @trade_list.games.each do |list_entry| %>
       <tr>
         <td class='col-md-1'>
-          <%= link_to game_entry.id, game_entry.list_entry_link %>
+          <%= link_to list_entry.index, list_entry.list_entry_link %>
         </td>
         <td class='col-md-1'>
-          <% if game_entry.wanted? %>
+          <% if list_entry.wanted? %>
             ADDED
           <% else %>
             <%= link_to '+want', wants_path, data: { 
               remote: true, type: 'json', method: 'post', params: { 
-                game_id: game_entry.game_id, list_entry_id: game_entry.list_entry_id, seller: game_entry.user
+                game_id: list_entry.game_id, list_entry_id: list_entry.list_entry_id, seller: list_entry.owner
               }.to_param, disable_with: 'Submitting...', success_text: 'ADDED'
             }, :class => 'btn btn-primary btn-xs' %>
           <% end %>
         </td>
         <td class='col-md-3'>
-          <%= link_to game_entry.name, game_entry.bgg_link %>
+          <%= link_to list_entry.name, list_entry.bgg_link %>
         </td>
         <td class='col-md-3'>
-          <%= link_to game_entry.user, Bgg.link_to_user(game_entry.user) %>
+          <%= link_to list_entry.owner, Bgg.link_to_user(list_entry.owner) %>
         </td>
       </tr>
     <% end %>

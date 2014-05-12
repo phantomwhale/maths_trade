@@ -1,8 +1,8 @@
 class GeekListEntry
-  attr_reader :id
+  attr_reader :index
 
-  def initialize(id, node)
-    @id = id
+  def initialize(index, node)
+    @index = index
     @node = node
   end
 
@@ -22,7 +22,7 @@ class GeekListEntry
     @node['objectname']
   end
 
-  def user
+  def owner
     @node['username']
   end
 

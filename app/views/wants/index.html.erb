@@ -2,18 +2,17 @@
 
 <table class="table toggle_want_behaviour">
   <thead>
-    <th class='col-md-1'>GL #</td>
-    <th class='col-md-1'>Actions</td>
-    <th class='col-md-3'>Game</td>
-    <th class='col-md-3'>Username</td>
-    <th class='col-md-3'>Trade Code</td>
+    <th class='col-md-1'>GL #</th>
+    <th class='col-md-1'>Actions</th>
+    <th class='col-md-3'>Game</th>
+    <th class='col-md-3'>Username</th>
+    <th class='col-md-3'>Trade Code</th>
   </thead>
   <tbody>
     <% @wants.each do |want| %>
-      <% game = @games_by_list_entry_id[want.list_entry_id] %>
       <tr>
         <td class='col-md-1'>
-          <%= link_to game.id, Bgg.link_to_list_item(game.list_entry_id) %>
+          <%= link_to want.index, Bgg.link_to_list_item(want.list_entry_id) %>
         </td>
         <td class='col-md-1'>
           <%= link_to '-want', want_path(want.id), data: { 
@@ -21,13 +20,13 @@
           }, :class => 'btn btn-primary btn-xs' %>
         </td>
         <td class='col-md-3'>
-          <%= link_to game.name, Bgg.link_to_thing(game.game_id) %>
+          <%= link_to want.name, Bgg.link_to_thing(want.game_id) %>
         </td>
         <td class='col-md-3'>
-          <%= link_to game.user, Bgg.link_to_user(game.user) %>
+          <%= link_to want.owner, Bgg.link_to_user(want.owner) %>
         </td>
         <td class='col-md-3'>
-          <%= game.trade_code %>
+          <%= want.trade_code %>
         </td>
       </tr>
     <% end %>

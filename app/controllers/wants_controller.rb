@@ -2,7 +2,6 @@ class WantsController < ApplicationController
 
   def index
     @wants = Want.where(:user => current_user).order('list_entry_id')
-    @games_by_list_entry_id = Bgg.geek_list(GeekList::AUSSIE_MID_YEAR_2014_ID).games_by_list_entry_id
   end
 
   def create

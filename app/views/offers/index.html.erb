@@ -1,22 +1,30 @@
 <h1>Your Offered Games</h1>
 
-<table class="table toggle_want_behaviour">
+<table class="table">
   <thead>
-    <th class='col-md-1'>GL #</td>
-    <th class='col-md-3'>Game</td>
-    <th class='col-md-3'>Trade Code</td>
+    <th class='col-md-1'>GL #</th>
+    <th class='col-md-3'>Game</th>
+    <th class='col-md-3'>Trade Code</th>
+    <th class='col-md-5'>Will trade for</th>
   </thead>
   <tbody>
-    <% @offers.each do |game| %>
+    <% @offers.each do |offer| %>
       <tr>
         <td class='col-md-1'>
-          <%= link_to game.id, Bgg.link_to_list_item(game.list_entry_id) %>
+          <%= link_to offer.index, Bgg.link_to_list_item(offer.list_entry_id) %>
         </td>
         <td class='col-md-3'>
-          <%= link_to game.name, Bgg.link_to_thing(game.game_id) %>
+          <%= link_to offer.name, Bgg.link_to_thing(offer.game_id) %>
         </td>
         <td class='col-md-3'>
-          <%= game.trade_code %>
+          <%= offer.trade_code %>
+        </td>
+        <td class='col-md-5'>
+          <% if offer.trades %>
+            <p><%= offer.trades.map { |game| game.name }.join(', ') %> 
+          <% else %>
+            <p>No trades defined yet ! Click <%= link_to 'here', new_offer_trade_row_path(offer.list_entry_id) %> to create trade list</p>
+          <% end %>
         </td>
       </tr>
     <% end %>
