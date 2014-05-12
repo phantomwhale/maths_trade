@@ -19,8 +19,8 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <% if signed_in? %>
             <ul class="nav navbar-nav navbar-left">
-              <%= content_tag :li, {class: ("active" if current_page?(trade_list_path(GeekList::AUSSIE_MID_YEAR_2014_ID)))} do %>
-                <%= link_to "Current Trade List", trade_list_path(GeekList::AUSSIE_MID_YEAR_2014_ID) %>
+              <%= content_tag :li, {class: ("active" if current_page?(geek_list_path(GeekList::AUSSIE_MID_YEAR_2014_ID)))} do %>
+                <%= link_to "Current Trade List", geek_list_path(GeekList::AUSSIE_MID_YEAR_2014_ID) %>
               <% end %>
               <%= content_tag :li, {class: ("active" if current_page?(wants_path))} do %>
                 <%= link_to "Wants", wants_path %>

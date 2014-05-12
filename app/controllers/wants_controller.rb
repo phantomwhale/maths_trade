@@ -7,7 +7,7 @@ class WantsController < ApplicationController
   def create
     Want.create!(user: current_user, list_entry_id: params[:list_entry_id])
     respond_to do |format|
-      format.html { redirect_to trade_list_path(GeekList::AUSSIE_MID_YEAR_2014_ID), notice: "Added item #{params[:list_entry_id]} to want list" }
+      format.html { redirect_to geek_list_path(GeekList::AUSSIE_MID_YEAR_2014_ID), notice: "Added item #{params[:list_entry_id]} to want list" }
       format.json { render :json => '{ "status" : "ok" }' }
     end
   end

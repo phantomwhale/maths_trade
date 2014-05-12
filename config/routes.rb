@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
   resource :session, only: [:create, :destroy]
   resource :login_request, only: [:create]
-  resources :trade_lists, only: [:show]
+  resources :geek_lists, only: [:show]
   resources :wants, only: [:create, :index, :destroy]
   resources :offers, only: [:index] do
     resources :trade_rows, only: [:new, :create]
