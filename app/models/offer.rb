@@ -17,11 +17,13 @@ class Offer
     list_entry.list_entry_id
   end
 
+  alias id list_entry_id
+
   def trade_row
     @trade_row ||= TradeRow.find_by_offer_id(list_entry_id)
   end
 
   def trades 
-    trade_row ? trade_row.trades : []
+    trade_row ? trade_row.trades : nil
   end
 end

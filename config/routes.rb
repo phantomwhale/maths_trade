@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   resources :wants, only: [:create, :index, :destroy]
   resource :want_list, only: [:show]
   resources :offers, only: [:index] do
-    resources :trade_rows, only: [:new, :create]
+    resources :trade_rows, only: [:new, :create, :edit, :update, :destroy]
   end
 
   # Example resource route with options:
