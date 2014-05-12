@@ -28,6 +28,6 @@
     </tbody>
   </table>
   <%= form.submit 'Update Trade Row', class: 'btn btn-primary' %>
-  <%# link_to 'Delete Trade Row', offer_trade_row_path(@trade_row.offer_id, @trade_row), data: { method: 'post' },
-    :class => 'btn btn-warning' %>
+  <%= link_to 'Delete Trade Row', offer_trade_row_path(@trade_row.offer_id, @trade_row), method: 'delete',
+    confirm: 'This will delete all games from this trade row, are you sure?', class: 'btn btn-danger' %>
 <% end %>
