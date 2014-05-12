@@ -9,8 +9,7 @@ module Bgg
     end
 
     def geek_list(id = GeekList::AUSSIE_MID_YEAR_2014_ID)
-      file = adapter.geeklist(id)
-      GeekList.new(Nokogiri::XML(file))
+      @geek_list ||= GeekList.new(Nokogiri::XML(adapter.geeklist(id)))
     end
 
     def game_entry(id)
