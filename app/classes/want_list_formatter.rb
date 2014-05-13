@@ -7,7 +7,7 @@ class WantListFormatter
 
   def formatted_trades
     @offers.map do |offer|
-      trade_codes = offer.trades.collect(&:trade_code).join(" ")
+      trade_codes = offer.trades.collect(&:trade_code).join(" ") if offer.trades
       "(#{@username}) #{offer.trade_code}: #{trade_codes}"
     end
   end
