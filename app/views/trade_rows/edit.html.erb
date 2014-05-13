@@ -1,32 +1,7 @@
 <h1>Edit Trade Row for <%= @trade_row.offer.name %></h1>
 
 <%= form_for @trade_row, url: offer_trade_row_path(@trade_row.offer_id, @trade_row) do |form| %>
-  <table class="table">
-    <thead>
-      <th class='col-md-1'>Add to row?</th>
-      <th class='col-md-3'>Game</th>
-      <th class='col-md-3'>Username</th>
-      <th class='col-md-3'>Trade Code</th>
-    </thead>
-    <tbody>
-      <% @wants.each do |want| %>
-        <tr>
-          <td class='col-md-1'>
-            <%= check_box_tag 'trade_row[trade_ids][]', want.list_entry_id, @trade_row.trade_ids.include?(want.list_entry_id) %>
-          </td>
-          <td class='col-md-3'>
-            <%= link_to want.name, Bgg.link_to_thing(want.game_id) %>
-          </td>
-          <td class='col-md-3'>
-            <%= link_to want.owner, Bgg.link_to_user(want.owner) %>
-          </td>
-          <td class='col-md-3'>
-            <%= want.trade_code %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+  <%= render 'trade_row_form' %>
   <%= form.submit 'Update Trade Row', class: 'btn btn-primary' %>
   <%= link_to 'Delete Trade Row', offer_trade_row_path(@trade_row.offer_id, @trade_row), method: 'delete',
     confirm: 'This will delete all games from this trade row, are you sure?', class: 'btn btn-danger' %>

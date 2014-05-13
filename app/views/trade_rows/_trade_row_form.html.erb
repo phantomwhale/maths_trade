@@ -1,0 +1,33 @@
+<div class="form_group col-md-6">
+<%= label_tag :cash, 'Cash Offer (dollars)' %>
+<%= number_field_tag :cash, nil, min: 0, placeholder: 'Enter cash offer' %>
+<p class='help-block'>Enter the cash amount you would be happy to trade <%= @trade_row.offer.name %> for</p>
+</div>
+<div class="form_group">
+<table class="table">
+  <thead>
+    <th class='col-md-1'>Add to row?</th>
+    <th class='col-md-3'>Game</th>
+    <th class='col-md-3'>Username</th>
+    <th class='col-md-3'>Trade Code</th>
+  </thead>
+  <tbody>
+    <% @wants.each do |want| %>
+      <tr>
+        <td class='col-md-1'>
+          <%= check_box_tag 'trade_row[trade_ids][]', want.list_entry_id, @trade_row.trade_ids.include?(want.list_entry_id) %>
+        </td>
+        <td class='col-md-3'>
+          <%= link_to want.name, Bgg.link_to_thing(want.game_id) %>
+        </td>
+        <td class='col-md-3'>
+          <%= link_to want.owner, Bgg.link_to_user(want.owner) %>
+        </td>
+        <td class='col-md-3'>
+          <%= want.trade_code %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
