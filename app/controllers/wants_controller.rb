@@ -12,6 +12,17 @@ class WantsController < ApplicationController
     end
   end
 
+  def edit
+    @want = Want.find(params[:id])
+  end
+
+  def update
+    @want = Want.find(params[:id])
+    cash_offer = params[:want][:cash_offer]
+    @want.update_attributes!(cash_offer: cash_offer)
+    render :show
+  end
+
   def destroy
     Want.find(params[:id]).destroy
     respond_to do |format|

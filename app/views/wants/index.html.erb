@@ -4,9 +4,10 @@
   <thead>
     <th class='col-md-1'>GL #</th>
     <th class='col-md-1'>Actions</th>
-    <th class='col-md-3'>Game</th>
-    <th class='col-md-3'>Username</th>
-    <th class='col-md-3'>Trade Code</th>
+    <th class='col-md-2'>Game</th>
+    <th class='col-md-2'>Username</th>
+    <th class='col-md-2'>Trade Code</th>
+    <th class='col-md-3'>Cash Offer</th>
   </thead>
   <tbody>
     <% @wants.each do |want| %>
@@ -19,14 +20,21 @@
             remote: true, type: 'json', method: 'delete', disable_with: 'Submitting...', success_text: 'REMOVED'
           }, :class => 'btn btn-primary btn-xs' %>
         </td>
-        <td class='col-md-3'>
+        <td class='col-md-2'>
           <%= link_to want.name, Bgg.link_to_thing(want.game_id) %>
         </td>
-        <td class='col-md-3'>
+        <td class='col-md-2'>
           <%= link_to want.owner, Bgg.link_to_user(want.owner) %>
         </td>
-        <td class='col-md-3'>
+        <td class='col-md-2'>
           <%= want.trade_code %>
+        </td>
+        <td class='col-md-3, edit-want-<%= want.id %>'>
+          <% if want.cash_offer %>
+            <%= render 'cash_offer', want: want %>
+          <% else %>
+            <%= link_to 'Add Cash Offer', edit_want_path(want), data: { remote: true } %>
+          <% end %>
         </td>
       </tr>
     <% end %>
