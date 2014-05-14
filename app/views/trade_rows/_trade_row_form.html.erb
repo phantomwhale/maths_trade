@@ -1,6 +1,6 @@
 <div class="form_group">
 <%= label_tag :cash_offer, 'Cash Offer (dollars)' %>
-<%= number_field_tag 'trade_row[cash_offer]', nil, min: 1, placeholder: 'Enter cash offer' %>
+<%= number_field_tag 'trade_row[cash_offer]', @trade_row.cash_offer, min: 1, placeholder: 'Enter cash offer' %>
 <p class='help-block'>Enter the cash amount you would be happy to trade <%= @trade_row.offer.name %> for</p>
 </div>
 <div class="form_group">
