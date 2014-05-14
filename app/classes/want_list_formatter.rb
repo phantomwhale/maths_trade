@@ -11,4 +11,8 @@ class WantListFormatter
       "(#{@username}) #{offer.trade_code}: #{trade_codes}"
     end
   end
+
+  def trades
+    formatted_trades.join("\n")
+  end
 end

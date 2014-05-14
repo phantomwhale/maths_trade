@@ -1,7 +1,12 @@
 <h1>Want List</h1>
 <pre>
-<% @formatter.formatted_trades.each do |formatted_trade| %>
-  <%= formatted_trade %>
-<% end %>
+<%= @formatter.trades %>
 </pre>
 
+<%= form_tag("http://www.rattus.net/cgi-bin/checktrades.py") do %>
+  <%= text_area_tag(:tradelist, @formatter.trades, class: 'hidden') do %>
+  <% end %>
+  <%= submit_tag 'Verify want list' %>
+<% end %>
+
+<p class='help-block'>Verification is done using Bruce (thepackrat)'s Online want-list verifier</p>
