@@ -1,6 +1,0 @@
-<h1>Create Trade Row for <%= @trade_row.offer.name %></h1>
-
-<%= form_for @trade_row, url: offer_trade_rows_path(@trade_row.offer_id) do |form| %>
-  <%= render 'trade_row_form' %>
-  <%= form.submit 'Create Trade Row', class: 'btn, btn-primary' %>
-<% end %>

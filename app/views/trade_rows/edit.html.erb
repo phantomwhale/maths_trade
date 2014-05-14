@@ -1,3 +1,11 @@
+<% if @trade_row.errors.any? %>
+  <div class='alert alert-warning'>
+<% @trade_row.errors.full_messages.each do |msg| %>
+  <p><%= msg %></p>
+<% end %>
+</div>
+<% end %>
+
 <h1>Edit Trade Row for <%= @trade_row.offer.name %></h1>
 
 <%= form_for @trade_row, url: offer_trade_row_path(@trade_row.offer_id, @trade_row) do |form| %>
