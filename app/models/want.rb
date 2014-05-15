@@ -1,4 +1,6 @@
 class Want < ActiveRecord::Base
+  acts_as_list
+
   validates :user, :list_entry_id, presence: true
   validates_uniqueness_of :list_entry_id, :scope => :user_id
   validates :cash_offer, numericality: { only_integer: true, greater_than: 0, 

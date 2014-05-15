@@ -20,7 +20,9 @@ Rails.application.routes.draw do
   resource :session, only: [:create, :destroy]
   resource :login_request, only: [:create]
   resources :geek_lists, only: [:show]
-  resources :wants, only: [:create, :index, :destroy, :edit, :update]
+  resources :wants, only: [:create, :index, :destroy, :edit, :update] do
+    collection { post :sort }
+  end
   resource :want_list, only: [:show]
   resources :offers, only: [:index] do
     resource :trade_row, only: [:edit, :update, :destroy]

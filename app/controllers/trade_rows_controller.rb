@@ -1,7 +1,7 @@
 class TradeRowsController < ApplicationController
 
   def edit
-    @wants = Want.where(:user => current_user).order('list_entry_id')
+    load_wants
     @trade_row = TradeRow.find_or_create_by(offer_id: params[:offer_id])
   end
 
@@ -11,7 +11,7 @@ class TradeRowsController < ApplicationController
     if @trade_row.update_attributes(trade_row_params)
       redirect_to offers_path
     else
-      @wants = Want.where(:user => current_user).order('list_entry_id')
+      load_wants
       render :edit
     end
   end
@@ -23,6 +23,10 @@ class TradeRowsController < ApplicationController
   end
 
   private
+
+  def load_wants
+    @wants = Want.where(:user => current_user).order('position')
+  end
 
   def trade_row_params
     params[:trade_row].permit(:cash_offer, :trade_ids => [])

@@ -1,7 +1,7 @@
 class WantsController < ApplicationController
 
   def index
-    @wants = Want.where(:user => current_user).order('list_entry_id')
+    @wants = Want.where(:user => current_user).order('position')
   end
 
   def create
@@ -21,6 +21,13 @@ class WantsController < ApplicationController
     cash_offer = params[:want][:cash_offer]
     @want.update_attributes!(cash_offer: cash_offer)
     render :show
+  end
+
+  def sort
+    params[:want].each_with_index do |id, index|
+      Want.where(id: id).update_all(position: index)
+    end
+    render nothing: true
   end
 
   def destroy
