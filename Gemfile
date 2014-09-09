@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.1.1'
+ruby '2.1.2'
 
 # UNICORNS AND RAINBOWS POWER THIS APP
 gem 'unicorn-rails'
@@ -53,7 +53,10 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'pry'
-  gem 'pry-plus'
+  gem 'pry-doc'
+  gem 'pry-docmore'
+  gem 'pry-stack_explorer'
+  gem 'pry-byebug'
   gem 'pry-rails'
 
   gem 'better_errors'
